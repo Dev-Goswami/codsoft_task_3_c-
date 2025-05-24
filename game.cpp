@@ -100,7 +100,15 @@ int main() {
         int position;
         currentPlayer =='X'?cout<<"\033[32m":cout<<"\033[36m";
         cout << "Player " << currentPlayer<<"|->";
-        cin>>position;
+         //when  user  input is not a number
+        if (!(cin >> position)) {
+            cin.clear();  // Clear error flags
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');  // Clear buffer
+            cout << "\033[31m Invalid input! Please enter a number between 1-9.\033[0m" << endl;
+            sleep_program(100);
+            continue;
+        }
+
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');//clear buffer 
           
 
